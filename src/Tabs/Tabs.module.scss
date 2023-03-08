@@ -1,0 +1,25 @@
+.Tabs {
+    grid-area: Tabs;
+    width: 100%;
+    background-color: white;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 8px;
+
+    
+    &__button {
+        background: none;
+        border: 0.2px solid #e5e5e535;
+        flex: 1;
+        text-transform: uppercase;
+        font-weight: 500;
+        @media screen and (max-width: 420px) {
+            font-size: 10px;
+        }
+
+    }
+}

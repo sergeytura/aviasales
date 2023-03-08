@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap');
+@import '../Style/reset.scss';
+
+
+$backColor: #F3F7FA;
+$cardBackground: #FFFFFF;
+
+body {
+  background: $backColor;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  @media screen and (max-width: 420px) {
+    // width: 100%;
+    // font-size: smaller;
+  }
+}
+
+.wrapper {
+  width: 960px;
+
+  margin: 0 auto;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  // font-size: large;
+  // justify-content: center;
+  // gap: 3vh;
+  @media screen and (max-width: 420px) {
+    width: 100%;
+    font-size: smaller;
+  }
+}
+
+.logo {
+
+  display: flex;
+  justify-content: center;
+  // width: 60px;
+  // height: 60px;
+  // background-image: url('/src/App/Logo.png')
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 232px 502px;
+  grid-template-areas: 
+    "Filter Tabs"
+    "Filter CardList";
+  justify-content: center;
+  grid-row: span 2;
+  gap: 15px;
+  padding: 10px;
+  @media screen and (max-width: 420px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "Filter"
+    "Tabs"
+    "CardList"
+  }
+}
+
+// .transfer {
+//   width: 232px;
+//   height: 252px;
+//   background: $cardBackground;
+// }
