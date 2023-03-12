@@ -26,9 +26,12 @@
   
   .info {
     margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    // display: flex;
+    // justify-content: space-between;
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 15px;
   }
   
   .content > p:first-child {

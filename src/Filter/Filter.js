@@ -24,7 +24,7 @@ const filterData = [
 const Filter = () => {
     const filters = filterData.map(el => {
         return (
-            <label key={el.id}>
+            <label key={el.label}>
               <input
                 type='checkbox'
                 name={el.label}
@@ -42,7 +42,7 @@ const Filter = () => {
             <label>
               <input
                 type='checkbox'
-                name='ALL' 
+                name='ALL'
               /> 
               <span> </span>
               <span className={style.Filter__item}>Все</span>

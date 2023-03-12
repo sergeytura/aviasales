@@ -1,4 +1,6 @@
-import React, {useState} from "react"; 
+import React from "react"; 
+import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
 import style from './Tabs.module.scss';
 
 const tabsData = [
@@ -16,13 +18,24 @@ const tabsData = [
   }
 ]
 
+
+
 const Tabs = () => {
+
+  const dispatch = useDispatch()
+  let searchId = useSelector(state => state.searchId)
+
+  const getSearchId = () => {
+    
+    console.log(searchId)
+  }
+
     const tab = tabsData.map(el => {
       return (
         <button
           className={style.Tabs__button}
           key={el.label}
-          onClick
+          onClick={() => getSearchId()}
         >
           {el.label}
         </button>
