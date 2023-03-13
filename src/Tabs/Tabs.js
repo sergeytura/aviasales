@@ -40,6 +40,7 @@ const Tabs = () => {
           className={style.Tabs__button}
           key={el.label}
           onClick={() => dispatch(el.sort)}
+          
         >
           {el.label}
         </button>

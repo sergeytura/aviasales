@@ -1,21 +1,14 @@
 
 
 //Tickets state
-
 const defaultState = {
     searchId: '',
-    // filters: ['ONE','TWO','THREE','NO'],
     filters: ['1','2','3','0'],
     tickets: [],
     loading: true,
     error: false
 }
 
-//Actions
-const SET_TICKETS = 'ADD_TICKETS'
-const SET_SEARCH_ID = 'SET_SEARCH_ID'
-const SET_LOADING = 'SET_LOADING'
-const SET_ERROR = 'SET_ERROR'
 // Sort
 const CHEAP = 'CHEAP'
 const FAST = 'FAST'
@@ -23,10 +16,14 @@ const OPTIMAL = 'OPTIMAL'
 // Filters
 const ALL_TRANSFER = 'ALL_TRANSFER'
 const TRANSFER = 'TRANSFER'
-// const ONE_TRANSFER = 'ONE_TRANSFER'
-// const TWO_TRANSFER = 'TWO_TRANSFER'
-// const THREE_TRANSFER = 'THREE_TRANSFER'
 
+//Actions
+const SET_TICKETS = 'ADD_TICKETS'
+const SET_SEARCH_ID = 'SET_SEARCH_ID'
+const SET_LOADING = 'SET_LOADING'
+const SET_ERROR = 'SET_ERROR'
+
+//Action creators
 export const setTickets = (tickets) => ({type: SET_TICKETS, tickets})
 export const setSearchId = (id) => ({type: SET_SEARCH_ID, id})
 export const setLoading = (switcher) => ({type: SET_LOADING, switcher})
@@ -42,11 +39,7 @@ export const allTransfer = () => ({type: ALL_TRANSFER})
 export const sortCheap = () => ({type: CHEAP})
 export const sortFast = () => ({type: FAST})
 export const sortOptimal = () => ({type: OPTIMAL})
-// function optimalCondition(x,y){
-//     (x.price > y.price) ? 1: -1
-//     (x.segments[0].duration > y.segments[0].duration)? 1 : -1
-//     return 0;
-// }
+
 //Tickets reducer
 
 export const ticketsReducer = (state = defaultState, action) => {
@@ -60,7 +53,6 @@ export const ticketsReducer = (state = defaultState, action) => {
         case TRANSFER:
             if(state.filters.includes(action.filterType)) {
                 return {...state, filters: [...state.filters.filter(el => el !== action.filterType)]}
-                // return {...state, filters: [...state.filters.filter(el => el !== action.filterType)], tickets: [...state.tickets.filter(el => (el.segments[0].stops).length === action.value)]}
             }else{
                 return {...state, filters: [...state.filters, action.filterType]}
             }
@@ -76,8 +68,12 @@ export const ticketsReducer = (state = defaultState, action) => {
             return {...state, tickets: [...state.tickets.sort((x,y) => x.price - y.price)]}
         case FAST:
             return {...state, tickets: [...state.tickets.sort((x,y) => x.segments[0].duration - y.segments[0].duration)]}
-        // case OPTIMAL:
-        //     return {...state, tickets: [...state.tickets.sort(optimalCondition)]}
+        case OPTIMAL: 
+            return {...state, tickets: [...state.tickets.sort(function(a, b) {
+                    const first = a.segments[0].duration + a.segments[1].duration + +a.price;
+                    const second = b.segments[0].duration + b.segments[1].duration + +b.price;
+                    return first - second;
+            })]}
         default:
             return state;
     }

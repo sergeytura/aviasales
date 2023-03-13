@@ -32,18 +32,20 @@ const filterData = [
 ]
 
 const Filter = () => {
-    const { tickets, filters } = useSelector(state => state.tickets)
+    const { filters } = useSelector(state => state.tickets)
     const dispatch = useDispatch()
-    // const noTrans = tickets.segments[0].stops.length === 0
     const filtersData = filterData.map(el => {
         return (
-            <label 
-            onClick={() => dispatch(el.filter)}
+            <label
+            htmlFor={el.label} 
+            
             key={el.label}>
               <input
+                id={el.label}
                 type='checkbox'
                 name={el.label}
                 checked={filters.includes(el.check)}
+                onChange={() => dispatch(el.filter)}
               /> 
               <span> </span>
               <span 
@@ -58,11 +60,13 @@ const Filter = () => {
           <h1>КОЛИЧЕСТВО ПЕРЕСАДОК</h1>
     
           <form className={style.Filter__form}>
-            <label onClick={() => dispatch(allTransfer())}>
+            <label htmlFor='ALL' >
               <input
+                id='ALL'
                 type='checkbox'
                 name='ALL'
                 checked={filters.length === 4}
+                onChange={() => dispatch(allTransfer())}
               /> 
               <span> </span>
               <span className={style.Filter__item}>Все</span>
