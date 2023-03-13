@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import style from './Card.module.scss';
-import S7Logo from '../Images/S7Logo.png'
 import { useSelector } from "react-redux";
 import { format } from "date-fns"
 
 const Card = ({count}) => {
   
-  const { tickets } = useSelector(state => state.tickets) // все билеты
+  const { tickets, filters } = useSelector(state => state.tickets) // все билеты
 
-  const viewedTickets = tickets.slice(0, count) // кол-во отображения билетов
+  const filteredTickets = tickets.filter(el => filters.some( filter => (el.segments[0].stops).length === parseInt(filter))) //обработка фильтра
+
+  const viewedTickets = filteredTickets.slice(0, count) // кол-во отображения билетов
 
   const view = viewedTickets.map((el, index) => {
     const image = `https://pics.avs.io/99/36/${el.carrier}.png` //изображение самолета
