@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from './Card.module.scss';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns"
+// import { sortTickets } from "../Store/Actions/sortActions";
 
 const Card = ({count}) => {
+  const dispatch = useDispatch()
+  const { tickets } = useSelector(state => state.ticketsReducer) // все билеты
+  const { filters } = useSelector(state => state.filterReducer)
+  // const { sorted } = useSelector(state => state.sortReducer)
+
   
-  const { tickets, filters } = useSelector(state => state.tickets) // все билеты
 
   const filteredTickets = tickets.filter(el => filters.some( filter => (el.segments[0].stops).length === parseInt(filter))) //обработка фильтра
-
+  
   const viewedTickets = filteredTickets.slice(0, count) // кол-во отображения билетов
 
   const view = viewedTickets.map((el, index) => {

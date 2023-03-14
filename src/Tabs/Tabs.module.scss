@@ -23,6 +23,8 @@
         }
 
     }
-    
-
+    &__active {
+        background-color: rgba(33, 150, 243, 1);
+        color: white;
+    }
 }

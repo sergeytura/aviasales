@@ -1,4 +1,5 @@
-import { setSearchId, setTickets, setLoading, setError } from "../Reducers/ticketsReducer"
+// import { setSearchId, setTickets, setLoading, setError } from "../Reducers/ticketsReducer"
+import { setSearchId, setTickets, setLoading, setError } from "../Actions/ticketsActions"
 
 export const fetchSearchId = () => {
     return dispatch => {
@@ -11,6 +12,7 @@ export const fetchSearchId = () => {
         .then((searchId) => {
             dispatch(fetchTickets(searchId))
         })
+        .catch((err) => err)
     }
 }
 

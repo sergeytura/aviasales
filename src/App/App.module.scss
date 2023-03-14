@@ -9,10 +9,6 @@ body {
   background: $backColor;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  @media screen and (max-width: 420px) {
-    // width: 100%;
-    // font-size: smaller;
-  }
 }
 
 .wrapper {
@@ -22,9 +18,6 @@ body {
   padding: 10px;
   font-family: 'Open Sans', sans-serif;
   position: relative;
-  // font-size: large;
-  // justify-content: center;
-  // gap: 3vh;
   @media screen and (max-width: 420px) {
     width: 100%;
     font-size: smaller;
@@ -35,9 +28,6 @@ body {
 
   display: flex;
   justify-content: center;
-  // width: 60px;
-  // height: 60px;
-  // background-image: url('/src/App/Logo.png')
 }
 
 .main {
@@ -58,9 +48,3 @@ body {
     "CardList"
   }
 }
-
-// .transfer {
-//   width: 232px;
-//   height: 252px;
-//   background: $cardBackground;
-// }
